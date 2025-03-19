@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
-import todoRoute from "./routes/todoRoute.js";
+import todoRoute from './Routes/todoRoute.js'
 
 const app = express();
 dotenv.config()
