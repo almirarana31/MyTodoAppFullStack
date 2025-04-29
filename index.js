@@ -3,8 +3,12 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
+import swaggerUi from "swagger-ui-express"
+
+import swaggerSpec from './utils/swagger.js'
+
 import todoRoute from './Routes/todoRoute.js'
-import usersRoute from "./Routes/usersRoute.js"
+import usersRoute from './Routes/usersRoute.js'
 
 const app = express();
 dotenv.config()
@@ -18,6 +22,9 @@ const PORT = process.env.PORT
 
 app.use("/service/todo", todoRoute)
 app.use("/service/user", usersRoute)
+
+//api documentation endpoint
+app.use("/todolist/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, { customSiteTitle: "Todo List Management API"}))
 
 mongoose.set("strictQuery", true)
 

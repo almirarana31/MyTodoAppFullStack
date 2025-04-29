@@ -22,7 +22,7 @@ function validatePassword(password) {
 
 // create refresh token
 function createRefreshToken(payload) {
-  return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET,  { expiresIn: '1d' })
+  return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '1d' })
 }
 
 
@@ -115,6 +115,18 @@ export const signIn = async (req, res) => {
           }
       })
 
+  } catch (error) {
+      return res.status(500).json({ message: error.message });
+  }
+}
+
+// user information
+export const userInfor = async (req, res) => {
+  try {
+      const userId = req.user.id
+      const userInfor = await Users.findById(userId).select("-password")
+
+      res.json(userInfor)
   } catch (error) {
       return res.status(500).json({ message: error.message });
   }
