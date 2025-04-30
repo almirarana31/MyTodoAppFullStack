@@ -1,7 +1,15 @@
 import express from "express";
 import { createTodo, deleteTodo, getAllTodos, updateTodo } from "../controllers/todolist.js";
+import { auth } from "../middleware/auth.js";
+import { 
+  validateTodoId, 
+  checkTodoExists,
+  rateLimiter,
+  validateCreateTodo,
+  validateUpdateTodo
+} from "../middleware/todoMiddleware.js";
 
-const router = express.Router()
+const router = express.Router();
 
 /**
  * @openapi
@@ -16,18 +24,18 @@ const router = express.Router()
  *   get:
  *     tags:
  *       - Todo
- *     summary: Get all todo list from database (no auth)
+ *     summary: Get all todo list from database (requires authentication)
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       '200':
  *         description: Success
  *       '403':
- *         description: Requested resource is forbidden
- *       '400':
- *         description: Bad request
+ *         description: Unauthorized
  *       '500':
  *         description: Internal server error
  */
-router.get("/get_all", getAllTodos)
+router.get("/get_all", auth, rateLimiter, getAllTodos);
 
 /**
  * @openapi
@@ -35,7 +43,9 @@ router.get("/get_all", getAllTodos)
  *   post:
  *     tags:
  *       - Todo
- *     summary: Add a new todo list (no auth)
+ *     summary: Add a new todo list (requires authentication)
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -45,13 +55,13 @@ router.get("/get_all", getAllTodos)
  *             properties:
  *               todo_image:
  *                 type: string
- *                 example: "https://api.dicebear.com/9.x/icons/svg?seed=Katherine"
+ *                 example: "https://api.dicebear.com/9.x/big-ears-neutral/svg?seed=Felix"
  *               todo_name:
  *                 type: string
- *                 example: "Doing Japanese exercise"
+ *                 example: "Create to-do list backend"
  *               todo_desc:
  *                 type: string
- *                 example: "learn basic kanji and basic grammar in conversation"
+ *                 example: "Continue MERN Stack part 2 tutorial to complete backend with authentication"
  *               todo_status:
  *                 type: string
  *                 example: "active"
@@ -59,13 +69,13 @@ router.get("/get_all", getAllTodos)
  *       '200':
  *         description: Add todo successfully
  *       '403':
- *         description: Requested resource is forbidden
+ *         description: Unauthorized
  *       '400':
  *         description: Bad request
  *       '500':
  *         description: Internal server error
  */
-router.post("/add_todo", createTodo)
+router.post("/add_todo", auth, validateCreateTodo, createTodo);
 
 /**
  * @openapi
@@ -73,7 +83,9 @@ router.post("/add_todo", createTodo)
  *   patch:
  *     tags:
  *       - Todo
- *     summary: Update todo list (no auth)
+ *     summary: Update todo list (requires authentication)
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - name: id
  *         in: path
@@ -88,15 +100,12 @@ router.post("/add_todo", createTodo)
  *           schema:
  *             type: object
  *             properties:
- *               todo_image:
- *                 type: string
- *                 example: "https://api.dicebear.com/9.x/avataaars-neutral/svg?seed=Wyatt"
  *               todo_name:
  *                 type: string
- *                 example: "Doing Japanese exercise updated"
+ *                 example: "Continue to-do list backend"
  *               todo_desc:
  *                 type: string
- *                 example: "learn basic kanji and basic grammar in conversation updated"
+ *                 example: "Implement OTP, Docker, and updated middleware"
  *               todo_status:
  *                 type: string
  *                 example: "active"
@@ -110,7 +119,7 @@ router.post("/add_todo", createTodo)
  *       '500':
  *         description: Internal server error
  */
-router.patch("/update_todo/:id", updateTodo)
+router.patch("/update_todo/:id", auth, validateTodoId, checkTodoExists, validateUpdateTodo, updateTodo);
 
 /**
  * @openapi
@@ -118,7 +127,9 @@ router.patch("/update_todo/:id", updateTodo)
  *   delete:
  *     tags:
  *       - Todo
- *     summary: Delete a todo (no auth)
+ *     summary: Delete a todo (requires authentication)
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - name: id
  *         in: path
@@ -136,6 +147,6 @@ router.patch("/update_todo/:id", updateTodo)
  *       '500':
  *         description: Internal server error
  */
-router.delete("/delete_todo/:id", deleteTodo)
+router.delete("/delete_todo/:id", auth, validateTodoId, checkTodoExists, deleteTodo);
 
-export default router
+export default router;

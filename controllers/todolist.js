@@ -13,7 +13,8 @@ export const createTodo = async (req, res) => {
             todo_image,
             todo_name,
             todo_desc,
-            todo_status
+            todo_status,
+            user: req.user.id
         });
 
         res.status(200).json({ message: "Create a to do list successfully!", newTodo })
@@ -32,7 +33,7 @@ export const getAllTodos = async (req, res) => {
     }
 };
 
-// Update to-do
+// update to-do
 export const updateTodo = async (req, res) => {
     try {
         const { id } = req.params;
@@ -44,10 +45,14 @@ export const updateTodo = async (req, res) => {
             todo_desc,
             todo_status,
         }
-        const updatedTodo = await TodolistModel.findByIdAndUpdate(id, updateData, { new: true });
+        const updatedTodo = await TodolistModel.findOneAndUpdate(
+            { _id: id, user: req.user.id },
+            updateData,
+            { new: true }
+        );
 
         if (!updatedTodo) {
-            return res.status(404).json({ message: "To-do not found." });
+            return res.status(404).json({ message: "Todo not found or you don't have permission to access it" });
         }
 
         res.status(200).json({ message: "To-do updated successfully!", updatedTodo });
@@ -56,7 +61,7 @@ export const updateTodo = async (req, res) => {
     }
 };
 
-// Delete to-do
+// delete to-do
 export const deleteTodo = async (req, res) => {
     try {
         const { id } = req.params;
