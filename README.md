@@ -1,21 +1,27 @@
-# Todo List Backend Application
+# Todo List Management API
 
-A robust backend application for managing todo lists with user authentication and role-based access control.
+Hello all! Welcome to my To Do List backend API testing. I used Swagger to test all my API endpoints. API for managing todo list, including user authentication and todo list management.
 
 ## Features
-
+Todo (Todo list related operations)
+- Todo CRUD Operations
+  - Get All Todo List
+  - Add/Create new Todo List
+  - Delete Todo List
+  - Update Todo List
+User (User related operations)
 - User Authentication (Sign Up, Sign In)
 - Email Verification
-- Todo CRUD Operations
 - Role-Based Access Control
-- Rate Limiting
-- API Documentation with Swagger
 
 ## API Documentation
 
 The API documentation is available at: `http://localhost:5001/todolist/api-docs`
 
 ### API Testing Results
+
+#### When using the API documentation, remember to change servers depending on which type of operation you'd like to use.
+![Server Change](screenshots/servers.png)
 
 #### 1. User Sign Up
 ![Sign Up API Test](screenshots/signup.png)
@@ -24,31 +30,73 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
 - **Test Data**:
   ```json
   {
-    "personal_id": "BN12345678",
-    "name": "Test User",
-    "email": "test@example.com",
-    "password": "Test123",
-    "confirmPassword": "Test123",
-    "address": "Test Address",
-    "phone_number": "1234567890"
+  "personal_id": "2702378956",
+  "name": "almira",
+  "email": "almira.rana@binus.ac.id",
+  "password": "Almira123",
+  "confirmPassword": "Almira123",
+  "address": "Jakarta, Indonesia",
+  "phone_number": "085972573889"
   }
   ```
-- **Result**: Successfully created user account and sent verification email
+- **Result**: User registered successfully. Please check your email for verification code.
 
-#### 2. User Sign In
-![Sign In API Test](screenshots/signin.png)
+#### 2. New User Verification
+![Verify User API Test](screenshots/signin.png)
+- **Endpoint**: POST `/service/user/verify-email`
+- **Description**: Verifies user using a one-time passcode sent to their email.
+- **Test Data**:
+  ```json
+  {
+  "email": "almira.rana@binus.ac.id",
+  "code": "476913"
+  }
+  ```
+- **Result**: Email verified successfully
+
+#### 3. User Sign In
+![User Sign in API Test](screenshots/signin.png)
 - **Endpoint**: POST `/service/user/signin`
 - **Description**: Authenticates user and returns access token
 - **Test Data**:
   ```json
   {
-    "email": "test@example.com",
-    "password": "Test123"
+  "email": "almira.rana@binus.ac.id",
+  "password": "Almira123"
   }
   ```
-- **Result**: Successfully authenticated and received access token
+- **Result**: Sign In successfully!
 
-#### 3. Create Todo
+#### 4. User Sign In
+![User Sign in API Test](screenshots/signin.png)
+- **Endpoint**: POST `/service/user/signin`
+- **Description**: Authenticates user and returns access token
+- **Test Data**:
+  ```json
+  {
+  "email": "almira.rana@binus.ac.id",
+  "password": "Almira123"
+  }
+  ```
+- **Result**: Sign In successfully!
+
+#### Before moving on to the next step, let's try to access the authorize feature in Swagger. The way this works is allow you to access admin-only operations.
+#### 1. Open Authorize Menu
+![Authorize Button](screenshots/auth1.png)
+
+#### 2. Retrieve your Access Token from Successful Sign in Message and Paste into the Authorization Menu.
+![Authorize Button](screenshots/auth2.png)
+
+#### 3. Authorize, then the menu should look like this.
+![Authorize Button](screenshots/auth3.png)
+
+
+
+
+
+
+
+#### 4. Create Todo
 ![Create Todo API Test](screenshots/create-todo.png)
 - **Endpoint**: POST `/service/todo/add_todo`
 - **Description**: Creates a new todo item
@@ -124,20 +172,3 @@ EMAIL=your_email@gmail.com
 EMAIL_PASSWORD=your_app_password
 EMAIL_SERVICE=gmail
 ```
-
-## Security Features
-
-- JWT Authentication
-- Password Hashing
-- Email Verification
-- Role-Based Access Control
-- Rate Limiting
-- Input Validation
-- CORS Protection
-
-## API Rate Limiting
-
-- Maximum requests: 100 per 15 minutes
-- Configurable through environment variables:
-  - `RATE_LIMIT_WINDOW_MS`
-  - `RATE_LIMIT_MAX_REQUESTS`
