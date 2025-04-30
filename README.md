@@ -79,7 +79,9 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: Sign In successfully!
+
 <br>
+
 #### Before moving on to the next step, let's try to access the authorize feature in Swagger. The way this works is allow you to access admin-only operations.
 1. Open Authorize Menu <br>
 ![Authorize Button](screenshots/auth1.png)
