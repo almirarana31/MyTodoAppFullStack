@@ -40,6 +40,9 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: User registered successfully. Please check your email for verification code.
+ 
+<br>
+
 
 #### 2. New User Verification
 ![Verify User API Test](screenshots/signin.png)
@@ -54,6 +57,9 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   ```
 - **Result**: Email verified successfully
 
+<br>
+
+
 #### 3. User Sign In
 ![User Sign in API Test](screenshots/signin.png)
 - **Endpoint**: POST `/service/user/signin`
@@ -66,6 +72,8 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: Sign In successfully!
+
+<br>
 
 #### 4. User Sign In
 ![User Sign in API Test](screenshots/signin.png)
@@ -80,15 +88,19 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   ```
 - **Result**: Sign In successfully!
 
+<br>
+
 #### Before moving on to the next step, let's try to access the authorize feature in Swagger. The way this works is allow you to access admin-only operations.
-1. Open Authorize Menu
+1. Open Authorize Menu <br>
 ![Authorize Button](screenshots/auth1.png)
 
-2. Retrieve your Access Token from Successful Sign in Message and Paste into the Authorization Menu.
+2. Retrieve your Access Token from Successful Sign in Message and Paste into the Authorization Menu. <br>
 ![Authorize Button](screenshots/auth2.png)
 
-3. Authorize, then the menu should look like this.
+3. Authorize, then the menu should look like this. <br>
 ![Authorize Button](screenshots/auth3.png)
+
+<br>
 
 #### 5. Get Current User Information
 ![User Information API Test](screenshots/user-infor.png)
@@ -113,6 +125,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   "verificationCode": null
   }
   ```
+<br>
 
 #### 6. Get All Users
 ![Get All Users API Test](screenshots/getallusers.png)
@@ -183,6 +196,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
 ]
  ```
+<br>
 
 #### 7. Update User Details
 ![Update User API Test](screenshots/update-user.png)
@@ -200,7 +214,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: User updated successfully
-
+<br>
 
 #### 8. Delete User
 ![Delete User API Test](screenshots/delete-user.png)
@@ -217,6 +231,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
 - Resend verification email if previously send OTP has expired.
 - Forgot password if user does not remember password and would like to request a reset link.
 - Reset password using OTP from reset password link.
+<br>
 
 ### API Testing Results (Todo Based Operations)
 
@@ -234,6 +249,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: Create a to do list successfully!
+<br>
 
 #### 2. Get All Todos
 ![Get Todos API Test](screenshots/get-todos.png)
@@ -265,6 +281,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
 ]
 ```
+<br>
 
 #### 3. Update Todo
 ![Update Todo API Test](screenshots/update-todos.png)
@@ -280,6 +297,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: To-do updated successfully!
+<br>
 
 #### 4. Delete Todo
 ![Delete Todo API Test](screenshots/delete-todo.png)
@@ -290,6 +308,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   id: 68125e14d057d4270e1b217f
   ```
 - **Result**: To-do deleted successfully!
+<br>
 
 ## Setup and Installation 💻
 
@@ -306,25 +325,40 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
 
 ## Docker Deployment 🐳
 
-1. Build the containers:
+1. Build and start the containers:
    ```bash
-   docker-compose build
+   docker-compose up --build
    ```
 
-2. Start the containers:
-   ```bash
-   docker-compose up
-   ```
+Docker up and running will look like this in Docker Desktop. It will be accessible in `http://localhost:5001/todolist/api-docs`
+![Docker 1 Proof](docker1.png)
+![Docker 2 Proof](docker2.png)
+
 
 ## Environment Variables
 
 Required environment variables:
 ```
-PORT=5001
-CONNECTION_URL=mongodb://mongo:27017/todoapp
-REFRESH_TOKEN_SECRET=your_refresh_token_secret
-ACCESS_TOKEN_SECRET=your_access_token_secret
-EMAIL=your_email@gmail.com
-EMAIL_PASSWORD=your_app_password
+CONNECTION_URL = your-mongodb-connection-url
+PORT = 5001
+
+# JWT config
+REFRESH_TOKEN_SECRET= your-refresh-token
+ACCESS_TOKEN_SECRET= your-access-token
+
+# email Configuration (for email verification and password reset)
+EMAIL=your-email@emai.com
+EMAIL_PASSWORD= your-email-app-password (not your real password)
 EMAIL_SERVICE=gmail
+
+# rate Limiting
+RATE_LIMIT_WINDOW_MS=900000  # 15 minutes
+RATE_LIMIT_MAX_REQUESTS=100  # 100 requests per window
+
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_SECURE=false
+EMAIL_USER=your-email@email.com
+EMAIL_FROM=email@email.com
+APP_URL=http://localhost:5001
 ```
