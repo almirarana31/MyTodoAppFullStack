@@ -325,25 +325,40 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
 
 ## Docker Deployment 🐳
 
-1. Build the containers:
+1. Build and start the containers:
    ```bash
-   docker-compose build
+   docker-compose up --build
    ```
 
-2. Start the containers:
-   ```bash
-   docker-compose up
-   ```
+Docker up and running will look like this in Docker Desktop. It will be accessible in `http://localhost:5001/todolist/api-docs`
+![Docker 1 Proof](docker1.png)
+![Docker 2 Proof](docker2.png)
+
 
 ## Environment Variables
 
 Required environment variables:
 ```
-PORT=5001
-CONNECTION_URL=mongodb://mongo:27017/todoapp
-REFRESH_TOKEN_SECRET=your_refresh_token_secret
-ACCESS_TOKEN_SECRET=your_access_token_secret
-EMAIL=your_email@gmail.com
-EMAIL_PASSWORD=your_app_password
+CONNECTION_URL = your-mongodb-connection-url
+PORT = 5001
+
+# JWT config
+REFRESH_TOKEN_SECRET= your-refresh-token
+ACCESS_TOKEN_SECRET= your-access-token
+
+# email Configuration (for email verification and password reset)
+EMAIL=your-email@emai.com
+EMAIL_PASSWORD= your-email-app-password (not your real password)
 EMAIL_SERVICE=gmail
+
+# rate Limiting
+RATE_LIMIT_WINDOW_MS=900000  # 15 minutes
+RATE_LIMIT_MAX_REQUESTS=100  # 100 requests per window
+
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_SECURE=false
+EMAIL_USER=your-email@email.com
+EMAIL_FROM=email@email.com
+APP_URL=http://localhost:5001
 ```
