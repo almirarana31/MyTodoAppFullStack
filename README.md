@@ -40,7 +40,10 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: User registered successfully. Please check your email for verification code.
+ 
 <br>
+
+
 #### 2. New User Verification
 ![Verify User API Test](screenshots/signin.png)
 - **Endpoint**: POST `/service/user/verify-email`
@@ -53,7 +56,10 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: Email verified successfully
+
 <br>
+
+
 #### 3. User Sign In
 ![User Sign in API Test](screenshots/signin.png)
 - **Endpoint**: POST `/service/user/signin`
@@ -66,7 +72,9 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: Sign In successfully!
+
 <br>
+
 #### 4. User Sign In
 ![User Sign in API Test](screenshots/signin.png)
 - **Endpoint**: POST `/service/user/signin`
