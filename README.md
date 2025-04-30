@@ -91,7 +91,9 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
 
 3. Authorize, then the menu should look like this. <br>
 ![Authorize Button](screenshots/auth3.png)
+
 <br>
+
 #### 5. Get Current User Information
 ![User Information API Test](screenshots/user-infor.png)
 - **Endpoint**: GET `/service/user/user-infor`
