@@ -40,7 +40,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: User registered successfully. Please check your email for verification code.
-
+<br>
 #### 2. New User Verification
 ![Verify User API Test](screenshots/signin.png)
 - **Endpoint**: POST `/service/user/verify-email`
@@ -53,7 +53,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: Email verified successfully
-
+<br>
 #### 3. User Sign In
 ![User Sign in API Test](screenshots/signin.png)
 - **Endpoint**: POST `/service/user/signin`
@@ -66,7 +66,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: Sign In successfully!
-
+<br>
 #### 4. User Sign In
 ![User Sign in API Test](screenshots/signin.png)
 - **Endpoint**: POST `/service/user/signin`
@@ -79,17 +79,17 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: Sign In successfully!
-
+<br>
 #### Before moving on to the next step, let's try to access the authorize feature in Swagger. The way this works is allow you to access admin-only operations.
-1. Open Authorize Menu
+1. Open Authorize Menu <br>
 ![Authorize Button](screenshots/auth1.png)
 
-2. Retrieve your Access Token from Successful Sign in Message and Paste into the Authorization Menu.
+2. Retrieve your Access Token from Successful Sign in Message and Paste into the Authorization Menu. <br>
 ![Authorize Button](screenshots/auth2.png)
 
-3. Authorize, then the menu should look like this.
+3. Authorize, then the menu should look like this. <br>
 ![Authorize Button](screenshots/auth3.png)
-
+<br>
 #### 5. Get Current User Information
 ![User Information API Test](screenshots/user-infor.png)
 - **Endpoint**: GET `/service/user/user-infor`
@@ -113,6 +113,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   "verificationCode": null
   }
   ```
+<br>
 
 #### 6. Get All Users
 ![Get All Users API Test](screenshots/getallusers.png)
@@ -183,6 +184,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
 ]
  ```
+<br>
 
 #### 7. Update User Details
 ![Update User API Test](screenshots/update-user.png)
@@ -200,7 +202,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: User updated successfully
-
+<br>
 
 #### 8. Delete User
 ![Delete User API Test](screenshots/delete-user.png)
@@ -217,6 +219,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
 - Resend verification email if previously send OTP has expired.
 - Forgot password if user does not remember password and would like to request a reset link.
 - Reset password using OTP from reset password link.
+<br>
 
 ### API Testing Results (Todo Based Operations)
 
@@ -234,6 +237,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: Create a to do list successfully!
+<br>
 
 #### 2. Get All Todos
 ![Get Todos API Test](screenshots/get-todos.png)
@@ -265,6 +269,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
 ]
 ```
+<br>
 
 #### 3. Update Todo
 ![Update Todo API Test](screenshots/update-todos.png)
@@ -280,6 +285,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   }
   ```
 - **Result**: To-do updated successfully!
+<br>
 
 #### 4. Delete Todo
 ![Delete Todo API Test](screenshots/delete-todo.png)
@@ -290,6 +296,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   id: 68125e14d057d4270e1b217f
   ```
 - **Result**: To-do deleted successfully!
+<br>
 
 ## Setup and Installation 💻
 
