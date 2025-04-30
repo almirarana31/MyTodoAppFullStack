@@ -7,7 +7,6 @@ import {
     resendVerificationCode,
     forgotPassword,
     resetPassword,
-    refreshToken,
     logout,
     getAllUsers,
     updateUser,
@@ -388,6 +387,20 @@ router.post("/forgot-password", forgotPassword)
  */
 router.post("/reset-password", resetPassword)
 
+/**
+ * @swagger
+ * /logout:
+ *   post:
+ *     tags:
+ *       - User
+ *     summary: Log out user
+ *     description: Logs out the user by clearing the refresh token cookie.
+ *     responses:
+ *       '200':
+ *         description: Logged out successfully
+ *       '500':
+ *         description: Internal server error
+ */
 router.post("/logout", logout)
 
 // Admin routes
