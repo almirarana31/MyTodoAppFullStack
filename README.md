@@ -94,6 +94,7 @@ After signing up, there should be an email from your own email or whatever email
 
 #### 4. Get Current User Information
 ![User Information API Test](screenshots/user-infor.png)
+
 - **Endpoint**: GET `/service/user/user-infor`
 - **Description**: Retrieves your account information.
 - **Result**: 
@@ -119,6 +120,7 @@ After signing up, there should be an email from your own email or whatever email
 
 #### 5. Get All Users
 ![Get All Users API Test](screenshots/getallusers.png)
+
 - **Endpoint**: GET `/service/user/users`
 - **Description**: Retrieves data of all existing users in database.
 - **Result**:
@@ -190,6 +192,7 @@ After signing up, there should be an email from your own email or whatever email
 
 #### 6. Update User Details
 ![Update User API Test](screenshots/update-user.png)
+
 - **Endpoint**: PATCH `/service/user/users/{id}`
 - **Description**: Updates data of currently existing user in database.
 - **Test Data**:
@@ -207,6 +210,7 @@ After signing up, there should be an email from your own email or whatever email
 
 #### 7. Delete User
 ![Delete User API Test](screenshots/delete-user.png)
+
 - **Endpoint**: DELETE `/service/user/users/{id}`
 - **Description**: Deletes all data of currently chosen existing user in database.
 - **Test Data**:
