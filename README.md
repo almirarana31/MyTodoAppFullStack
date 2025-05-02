@@ -185,7 +185,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
 
 #### 6. Update User Details
 ![Update User API Test](screenshots/update-user.png)
-- **Endpoint**: PUT `/service/user/users/{id}`
+- **Endpoint**: PATCH `/service/user/users/{id}`
 - **Description**: Updates data of currently existing user in database.
 - **Test Data**:
   ```json
