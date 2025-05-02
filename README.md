@@ -42,7 +42,9 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
 - **Result**: User registered successfully. Please check your email for verification code.
  
 <br>
-
+After signing up, there should be an email from your own email or whatever email you used in your .env file. This is what the email will look like. There will be an OTP that you will use for the next step.
+![OTP Email](screenshots/email.png)
+<br>
 
 #### 2. New User Verification
 ![Verify User API Test](screenshots/signin.png)
