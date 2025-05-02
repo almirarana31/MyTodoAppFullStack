@@ -403,7 +403,7 @@ router.post("/reset-password", resetPassword)
  */
 router.post("/logout", logout)
 
-// Admin routes
+// admin routes
 /** 
  * @swagger 
  * /users:

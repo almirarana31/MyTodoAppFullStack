@@ -354,7 +354,7 @@ export const logout = async (req, res) => {
   }
 }
 
-// Get all users (admin only)
+// get all users (admin only)
 export const getAllUsers = async (req, res) => {
     try {
         const users = await Users.find().select('-password -verificationCode -resetPasswordToken');
@@ -364,7 +364,7 @@ export const getAllUsers = async (req, res) => {
     }
 };
 
-// Update user (admin only)
+// update user (admin only)
 export const updateUser = async (req, res) => {
     try {
         const { id } = req.params;
@@ -375,7 +375,7 @@ export const updateUser = async (req, res) => {
             return res.status(404).json({ message: "User not found" });
         }
 
-        // Update fields if provided
+        // update fields if provided
         if (name) user.name = name;
         if (email) user.email = email;
         if (role) user.role = role;
@@ -389,7 +389,7 @@ export const updateUser = async (req, res) => {
     }
 };
 
-// Delete user (admin only)
+// delete user (admin only)
 export const deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
