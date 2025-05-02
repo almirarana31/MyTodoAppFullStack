@@ -68,16 +68,16 @@ export const signUp = async (req, res) => {
 
         await newUser.save();
 
-        // Generate and set verification code
+        // generate and set verification code
         const verificationCode = await setVerificationCode(newUser._id);
         
-        // Send verification email
+        // send verification email
         if (verificationCode) {
             const emailSent = await sendVerificationEmail(email, verificationCode);
             
             if (!emailSent) {
                 console.log("Verification email could not be sent");
-                // Continue with registration even if email fails
+                // continue with registration even if email fails
             }
         }
 
@@ -212,10 +212,10 @@ export const resendVerificationCode = async (req, res) => {
       return res.status(400).json({ message: "Email is already verified" });
     }
 
-    // Generate and set new verification code
+    // generate and set new verification code
     const verificationCode = await setVerificationCode(user._id);
     
-    // Send verification email
+    // send verification email
     if (verificationCode) {
       const emailSent = await sendVerificationEmail(email, verificationCode);
       
@@ -247,7 +247,7 @@ export const forgotPassword = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // Generate reset token
+    // generate reset token
     const resetToken = generateVerificationCode();
     const resetExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
     
@@ -297,7 +297,7 @@ export const resetPassword = async (req, res) => {
       return res.status(400).json({ message: "Invalid or expired reset code" });
     }
 
-    // Hash new password
+    // hash new password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(newPassword, salt);
     

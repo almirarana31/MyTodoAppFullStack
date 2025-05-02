@@ -50,15 +50,15 @@ export const registerWithVerification = async (userData) => {
   try {
     const { email } = userData;
     
-    // Generate verification code
+    // generate verification code
     const code = generateVerificationCode();
     const expires = Date.now() + 10 * 60 * 1000; // 10 minutes expiry
     
-    // Add verification details to user data
+    // add verification details to user data
     userData.verificationCode = code;
     userData.verificationExpires = expires;
     
-    // Send verification email
+    // send verification email
     await sendVerificationEmail(email, code);
     
     return { code, expires };
@@ -81,16 +81,16 @@ export const resendVerificationCode = async (email) => {
       throw new Error('Email is already verified');
     }
     
-    // Generate new verification code
+    // generate new verification code
     const code = generateVerificationCode();
     const expires = Date.now() + 10 * 60 * 1000; // 10 minutes expiry
     
-    // Update user with new verification details
+    // update user with new verification details
     user.verificationCode = code;
     user.verificationExpires = expires;
     await user.save();
     
-    // Send new verification email
+    // send new verification email
     await sendVerificationEmail(email, code);
     
     return { success: true, message: 'Verification code resent successfully' };
