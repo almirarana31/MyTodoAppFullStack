@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/28784c88-fc37-43a7-a075-082da827422f)# Todo List Management API 📝
+# Todo List Management API 📝
 
 🌟 Hello all! Welcome to my To Do List backend API testing. I used Swagger to test all my API endpoints. API for managing todo list, including user authentication and todo list management. 🌟
 
