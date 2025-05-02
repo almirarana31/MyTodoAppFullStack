@@ -1,4 +1,4 @@
-# Todo List Management API 📝
+![image](https://github.com/user-attachments/assets/28784c88-fc37-43a7-a075-082da827422f)# Todo List Management API 📝
 
 🌟 Hello all! Welcome to my To Do List backend API testing. I used Swagger to test all my API endpoints. API for managing todo list, including user authentication and todo list management. 🌟
 
@@ -189,13 +189,12 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
 - **Description**: Updates data of currently existing user in database.
 - **Test Data**:
   ```json
-  id: 68124f05d057d4270e1b216e
+  id: 68124be126f7a02ff9977cb2
   {
-  "name": "Ally",
-  "email": "almira.rana@binus.ac.id",
-  "role": "admin",
-  "address": "Wollongong, Australia",
-  "phone_number": "081234567890"
+  "name": "Almira",
+  "email": "new.email@gmail.com",
+  "role": "user",
+  "address": "New Address"
   }
   ```
 - **Result**: User updated successfully
