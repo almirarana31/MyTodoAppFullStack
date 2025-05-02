@@ -200,7 +200,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
 
 #### 7. Update User Details
 ![Update User API Test](screenshots/update-user.png)
-- **Endpoint**: GET `/service/user/users/{id}`
+- **Endpoint**: PUT `/service/user/users/{id}`
 - **Description**: Updates data of currently existing user in database.
 - **Test Data**:
   ```json
@@ -331,8 +331,8 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
    ```
 
 Docker up and running will look like this in Docker Desktop. It will be accessible in `http://localhost:5001/todolist/api-docs`
-![Docker 1 Proof](docker1.png)
-![Docker 2 Proof](docker2.png)
+![Docker 1 Proof](screenshots/docker1.png)
+![Docker 2 Proof](screenshots/docker2.png)
 
 
 ## Environment Variables
