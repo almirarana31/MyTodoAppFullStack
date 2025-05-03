@@ -13,10 +13,6 @@ const todolistSchema = mongoose.Schema({
         minlength: [3, 'Todo name must be at least 3 characters long'],
         index: true,
     },
-    todo_image: {
-        type: String,
-        default: "https://api.dicebear.com/9.x/avataaars/svg?seed=todo",
-    },
     todo_desc: {
         type: String,
         maxlength: [500, 'Description cannot exceed 500 characters'],

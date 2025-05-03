@@ -432,7 +432,7 @@ router.get("/users", auth, checkRole(['admin']), getAllUsers)
 /**
  * @swagger
  * /users/{id}:
- *   put:
+ *   patch:
  *     tags:
  *       - User
  *     summary: Update user
@@ -453,15 +453,17 @@ router.get("/users", auth, checkRole(['admin']), getAllUsers)
  *             properties:
  *               name:
  *                 type: string
+ *                 example: "Almira"
  *               email:
  *                 type: string
+ *                 example: "new.email@gmail.com"
  *               role:
  *                 type: string
  *                 enum: [user, admin]
+ *                 example: "user"
  *               address:
  *                 type: string
- *               phone_number:
- *                 type: string
+ *                 example: "New Address"
  *     responses:
  *       '200':
  *         description: User updated successfully
@@ -472,7 +474,7 @@ router.get("/users", auth, checkRole(['admin']), getAllUsers)
  *       '500':
  *         description: Internal server error
  */
-router.put("/users/:id", auth, checkRole(['admin']), updateUser)
+router.patch("/users/:id", auth, checkRole(['admin']), updateUser)
 
 /**
  * @swagger
