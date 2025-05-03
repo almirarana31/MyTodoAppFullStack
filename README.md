@@ -43,6 +43,11 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
  
 <br>
 
+After signing up, there should be an email from your own email or whatever email you used in your .env file. This is what the email will look like. There will be an OTP that you will use for the next step.
+
+![OTP Email](screenshots/email.png)
+
+<br>
 
 #### 2. New User Verification
 ![Verify User API Test](screenshots/signin.png)
@@ -75,21 +80,6 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
 
 <br>
 
-#### 4. User Sign In
-![User Sign in API Test](screenshots/signin.png)
-- **Endpoint**: POST `/service/user/signin`
-- **Description**: Authenticates user and returns access token
-- **Test Data**:
-  ```json
-  {
-  "email": "almira.rana@binus.ac.id",
-  "password": "Almira123"
-  }
-  ```
-- **Result**: Sign In successfully!
-
-<br>
-
 #### Before moving on to the next step, let's try to access the authorize feature in Swagger. The way this works is allow you to access admin-only operations.
 1. Open Authorize Menu <br>
 ![Authorize Button](screenshots/auth1.png)
@@ -102,8 +92,9 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
 
 <br>
 
-#### 5. Get Current User Information
+#### 4. Get Current User Information
 ![User Information API Test](screenshots/user-infor.png)
+
 - **Endpoint**: GET `/service/user/user-infor`
 - **Description**: Retrieves your account information.
 - **Result**: 
@@ -127,8 +118,9 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   ```
 <br>
 
-#### 6. Get All Users
+#### 5. Get All Users
 ![Get All Users API Test](screenshots/getallusers.png)
+
 - **Endpoint**: GET `/service/user/users`
 - **Description**: Retrieves data of all existing users in database.
 - **Result**:
@@ -198,26 +190,26 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
  ```
 <br>
 
-#### 7. Update User Details
+#### 6. Update User Details
 ![Update User API Test](screenshots/update-user.png)
-- **Endpoint**: PATCH `/service/user/users/{id}`
+- **Endpoint**: PUT `/service/user/users/{id}`
 - **Description**: Updates data of currently existing user in database.
 - **Test Data**:
   ```json
-  id: 68124f05d057d4270e1b216e
+  id: 68124be126f7a02ff9977cb2
   {
-  "name": "Ally",
-  "email": "almira.rana@binus.ac.id",
-  "role": "admin",
-  "address": "Wollongong, Australia",
-  "phone_number": "081234567890"
+  "name": "Almira",
+  "email": "new.email@gmail.com",
+  "role": "user",
+  "address": "New Address"
   }
   ```
 - **Result**: User updated successfully
 <br>
 
-#### 8. Delete User
+#### 7. Delete User
 ![Delete User API Test](screenshots/delete-user.png)
+
 - **Endpoint**: DELETE `/service/user/users/{id}`
 - **Description**: Deletes all data of currently chosen existing user in database.
 - **Test Data**:
@@ -226,7 +218,7 @@ The API documentation is available at: `http://localhost:5001/todolist/api-docs`
   ```
 - **Result**: User deleted successfully
 
-#### 9. Other POST Operations for User
+#### 8. Other POST Operations for User
 ![Other User API Test](screenshots/other-post.png)
 - Resend verification email if previously send OTP has expired.
 - Forgot password if user does not remember password and would like to request a reset link.
