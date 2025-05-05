@@ -6,6 +6,7 @@ import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import VerifyEmail from './components/Auth/VerifyEmail';
 import PasswordReset from './components/Auth/PasswordReset';
+import ResetPasswordConfirm from './components/Auth/ResetPasswordConfirm';
 import TodoList from './components/Todo/TodoList';
 import UserProfile from './components/Profile/UserProfile';
 import PrivateRoute from './components/common/PrivateRoute';
@@ -28,7 +29,8 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/verify-email" element={<VerifyEmail />} />
-            <Route path="/reset-password" element={<PasswordReset />} />
+            <Route path="/reset-password" element={<ResetPasswordConfirm />} />
+            <Route path="/forgot-password" element={<PasswordReset />} />
             <Route path="/" element={
               <PrivateRoute>
                 <TodoList />

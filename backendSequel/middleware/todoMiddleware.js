@@ -1,6 +1,6 @@
 // middleware/todoMiddleware.js
 import { Types } from 'mongoose';
-import findOne from '../models/todolist.js';
+import TodoList from '../models/todolist.js';
 
 // Middleware to validate ID
 export function validateTodoId(req, res, next) {
@@ -55,7 +55,15 @@ export async function checkTodoExists(req, res, next) {
     const { id } = req.params;
     const userId = req.user.id;
     
-    const todo = await findOne({ _id: id, user: userId });
+    console.log('Looking for todo:', { id, userId });
+    
+    // Fixed query format to match MongoModel's expectations
+    const todo = await TodoList.findOne({
+      _id: id, // Use MongoDB's _id field
+      user: userId.toString() // Ensure userId is a string to match the model definition
+    });
+    
+    console.log('Found todo:', todo);
     
     if (!todo) {
       return res.status(404).json({ message: "Todo not found or you don't have permission to access it" });
@@ -64,6 +72,7 @@ export async function checkTodoExists(req, res, next) {
     req.todo = todo;
     next();
   } catch (error) {
+    console.error('Check todo exists error:', error);
     return res.status(500).json({ message: error.message });
   }
 }

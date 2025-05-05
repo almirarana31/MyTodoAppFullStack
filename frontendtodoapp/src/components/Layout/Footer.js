@@ -12,12 +12,14 @@ const Footer = () => {
             </p>
           </div>
           <div className="flex space-x-6">
-            <Link to="/privacy" className="text-sm text-gray-300 hover:text-white">
-              Privacy Policy
-            </Link>
-            <Link to="/terms" className="text-sm text-gray-300 hover:text-white">
-              Terms of Service
-            </Link>
+            <a
+              href="https://www.linkedin.com/in/almira-rana-60861b294/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-gray-300 hover:text-white"
+            >
+              LinkedIn
+            </a>
             <a
               href="https://github.com/almirarana31/"
               target="_blank"

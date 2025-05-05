@@ -56,17 +56,19 @@ const TodoItem = ({ todo }) => {
     }
   };
 
+  const isCompleted = todo.todo_status === 'finished';
+
   return (
     <div
       className={`rounded-lg bg-white p-6 shadow-md transition-all duration-300 ${
-        todo.completed ? 'opacity-75' : ''
+        isCompleted ? 'opacity-75' : ''
       }`}
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <input
             type="checkbox"
-            checked={todo.completed}
+            checked={isCompleted}
             onChange={handleToggleComplete}
             className="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
           />
@@ -74,7 +76,7 @@ const TodoItem = ({ todo }) => {
             <div className="flex items-center gap-2">
               <h3
                 className={`text-lg font-medium ${
-                  todo.completed ? 'line-through text-gray-500' : 'text-gray-800'
+                  isCompleted ? 'line-through text-gray-500' : 'text-gray-800'
                 }`}
               >
                 {todo.todo_name}

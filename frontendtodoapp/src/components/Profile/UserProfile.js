@@ -26,6 +26,7 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
+        setError('');
         const userData = await authService.getUserInfo();
         setname(userData.name || '');
         setEmail(userData.email || '');
@@ -33,8 +34,10 @@ const UserProfile = () => {
         setAddress(userData.address || '');
         setPhoneNumber(userData.phone_number || '');
         setUserImage(userData.user_image || '');
+        console.log('User data loaded successfully:', userData);
       } catch (err) {
-        setError('Failed to load user data');
+        console.error('User data fetch error:', err);
+        setError('Failed to load user data: ' + (err.message || 'Unknown error'));
       } finally {
         setLoading(false);
       }

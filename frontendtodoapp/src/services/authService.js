@@ -63,22 +63,20 @@ const authService = {
     return response.data;
   },
 
-  resetPassword: async (token, password) => {
-    const response = await api.post('/service/user/reset-password', { token, password });
+  resetPassword: async (code, password, email) => {
+    const response = await api.post('/service/user/reset-password', { 
+      code, 
+      newPassword: password,
+      confirmPassword: password,
+      email
+    });
     return response.data;
   },
 
   getUserInfo: async () => {
     try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        throw new Error('No authentication token found');
-      }
-      const response = await api.get('/service/user/user-infor', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
+      // Use the api instance which already has the token configured
+      const response = await api.get('/service/user/user-infor');
       return response.data;
     } catch (error) {
       console.error('Error fetching user info:', error);  
@@ -88,23 +86,8 @@ const authService = {
 
   updateUser: async (userId, userData) => {
     try {
-        const token = localStorage.getItem('token');
         const currentUser = JSON.parse(localStorage.getItem('user'));
         
-        if (!token) {
-            throw new Error('No authentication token found');
-        }
-
-        // Debug log to check ID formats
-        console.log('Debug IDs:', {
-            passedUserId: userId,
-            currentUserId: currentUser.id || currentUser._id,
-            userData
-        });
-
-        // Set token in api instance defaults
-        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
         // Use currentUser.id instead of _id to match the token's ID
         const userIdToUse = currentUser.id || currentUser._id;
         

@@ -109,6 +109,28 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const forgotPassword = async (email) => {
+    try {
+      setError(null);
+      await authService.forgotPassword(email);
+      return { success: true };
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to send reset link');
+      return { success: false, error: err.response?.data?.message || 'Failed to send reset link' };
+    }
+  };
+
+  const resetPassword = async (token, password, email) => {
+    try {
+      setError(null);
+      await authService.resetPassword(token, password, email);
+      return { success: true };
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to reset password');
+      return { success: false, error: err.response?.data?.message || 'Failed to reset password' };
+    }
+  };
+
   // Reset error state when navigating or retrying actions
   const resetError = () => {
     setError(null);
@@ -124,6 +146,8 @@ export const AuthProvider = ({ children }) => {
     updateProfile,
     verifyEmailWithCode,
     resendVerificationCode,
+    forgotPassword,
+    resetPassword,
     resetError, // Expose resetError to the context
   };
 

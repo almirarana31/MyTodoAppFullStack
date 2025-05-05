@@ -40,8 +40,12 @@ const Register = () => {
       return setError('Passwords do not match');
     }
 
-    if (!formData.personal_id || !formData.name || !formData.email || 
-        !formData.password || !formData.address || !formData.phone_number) {
+    // Improve validation to check if fields are truly empty or only whitespace
+    const isEmptyField = Object.entries(formData)
+      .filter(([key]) => key !== 'confirmPassword') // Exclude confirmPassword from check
+      .some(([_, value]) => value.trim() === '');
+    
+    if (isEmptyField) {
       return setError('Please fill in all fields');
     }
 

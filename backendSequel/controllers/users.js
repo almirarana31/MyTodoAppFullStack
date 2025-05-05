@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import { compare, genSalt, hash } from 'bcrypt';
 import User from '../models/user.js';
 import { generateVerificationCode, sendVerificationEmail, sendPasswordResetEmail } from './userSendMail.js';
+import  verify  from 'jsonwebtoken';
 
 // Check password and confirmPassword
 function isMatch(password, confirm_password) {
@@ -10,7 +11,7 @@ function isMatch(password, confirm_password) {
 
 // Validate email
 function validateEmail(email) {
-  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 }
 
@@ -57,17 +58,22 @@ export async function signUp(req, res) {
       });
     }
 
-    // Use User model methods
+    // Use Sequelize methods to find existing user
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "This email is already registered" });
     }
 
+    // Hash password
+    const salt = await genSalt(10);
+    const hashedPassword = await hash(password, salt);
+
+    // Create new user with Sequelize
     const newUser = await User.create({
       personal_id,
       name,
       email,
-      password,
+      password: hashedPassword,
       address,
       phone_number
     });
@@ -76,10 +82,14 @@ export async function signUp(req, res) {
     const verificationCode = generateVerificationCode();
     const verificationExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
     
-    await User.findByIdAndUpdate(newUser._id, {
-      verificationCode,
-      verificationExpires
-    });
+    // Update the user with verification code
+    await User.update(
+      { _id: newUser._id },
+      { $set: {
+        verificationCode,
+        verificationExpires
+      }}
+    );
     
     // Send verification email
     try {
@@ -98,6 +108,7 @@ export async function signUp(req, res) {
       }
     });
   } catch (error) {
+    console.error("Error in signUp:", error);
     return res.status(500).json({ message: error.message });
   }
 }
@@ -162,7 +173,7 @@ export async function signIn(req, res) {
 export async function userInfor(req, res) {
   try {
     const userId = req.user.id;
-    const userInfo = await findById(userId);
+    const userInfo = await User.findOne({ _id: userId });
 
     if (!userInfo) {
       return res.status(404).json({ message: "User not found" });
@@ -199,7 +210,7 @@ export async function verifyEmail(req, res) {
       return res.status(400).json({ message: "Email and verification code are required" });
     }
     
-    const user = await findOne({ email });
+    const user = await User.findOne({ email });
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -213,11 +224,14 @@ export async function verifyEmail(req, res) {
       return res.status(400).json({ message: "Invalid or expired verification code" });
     }
 
-    await findByIdAndUpdate(user._id, {
-      verified: true,
-      verificationCode: null,
-      verificationExpires: null
-    });
+    await User.update(
+      { _id: user._id },
+      { $set: {
+        verified: true,
+        verificationCode: null,
+        verificationExpires: null
+      }}
+    );
 
     res.json({ message: "Email verified successfully" });
   } catch (error) {
@@ -234,7 +248,7 @@ export async function resendVerificationCode(req, res) {
       return res.status(400).json({ message: "Email is required" });
     }
     
-    const user = await findOne({ email });
+    const user = await User.findOne({ email });
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -248,10 +262,13 @@ export async function resendVerificationCode(req, res) {
     const verificationCode = generateVerificationCode();
     const verificationExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
     
-    await findByIdAndUpdate(user._id, {
-      verificationCode,
-      verificationExpires
-    });
+    await User.update(
+      { _id: user._id },
+      { $set: {
+        verificationCode,
+        verificationExpires
+      }}
+    );
     
     // Send verification email
     try {
@@ -274,7 +291,7 @@ export async function forgotPassword(req, res) {
       return res.status(400).json({ message: "Email is required" });
     }
     
-    const user = await findOne({ email });
+    const user = await User.findOne({ email });
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -284,10 +301,13 @@ export async function forgotPassword(req, res) {
     const resetToken = generateVerificationCode();
     const resetExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
     
-    await findByIdAndUpdate(user._id, {
-      verificationCode: resetToken,
-      verificationExpires: resetExpires
-    });
+    await User.update(
+      { _id: user._id },
+      { $set: {
+        verificationCode: resetToken,
+        verificationExpires: resetExpires
+      }}
+    );
     
     // Send password reset email
     try {
@@ -320,7 +340,7 @@ export async function resetPassword(req, res) {
       });
     }
     
-    const user = await findOne({ email });
+    const user = await User.findOne({ email });
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -334,11 +354,14 @@ export async function resetPassword(req, res) {
     const salt = await genSalt(10);
     const hashedPassword = await hash(newPassword, salt);
     
-    await findByIdAndUpdate(user._id, {
-      password: hashedPassword,
-      verificationCode: null,
-      verificationExpires: null
-    });
+    await User.update(
+      { _id: user._id },
+      { $set: {
+        password: hashedPassword,
+        verificationCode: null,
+        verificationExpires: null
+      }}
+    );
 
     res.json({ message: "Password reset successfully" });
   } catch (error) {
@@ -360,7 +383,7 @@ export async function refreshToken(req, res) {
         return res.status(400).json({ message: "Please login now!" });
       }
 
-      const user = await findById(result.id);
+      const user = await User.findOne({ _id: result.id });
       
       if (!user) {
         return res.status(404).json({ message: "User does not exist." });
@@ -399,7 +422,7 @@ export async function logout(req, res) {
 // Get all users (admin only)
 export async function getAllUsers(req, res) {
   try {
-    const users = await findAll();
+    const users = await User.findAll();
     
     // Map users to remove password and sensitive fields
     const safeUsers = users.map(user => ({
@@ -429,7 +452,7 @@ export async function updateUser(req, res) {
     const { name, email, address, phone_number, bio, user_image, role } = req.body;
 
     // Check if user exists
-    const user = await findById(id);
+    const user = await User.findOne({ _id: id });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -461,7 +484,9 @@ export async function updateUser(req, res) {
       if (user_image) updateData.user_image = user_image;
     }
 
-    const updatedUser = await findByIdAndUpdate(id, updateData, { new: true });
+    await User.update({ _id: id }, { $set: updateData });
+    // Fetch the updated user
+    const updatedUser = await User.findOne({ _id: id });
     
     // Create a response without sensitive fields
     const userResponse = {
@@ -489,12 +514,12 @@ export async function deleteUser(req, res) {
   try {
     const { id } = req.params;
 
-    const user = await findById(id);
+    const user = await User.findOne({ _id: id });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    await findByIdAndDelete(id);
+    await User.delete({ _id: id });
     return res.status(200).json({ message: "User deleted successfully" });
   } catch (error) {
     return res.status(500).json({ message: error.message });

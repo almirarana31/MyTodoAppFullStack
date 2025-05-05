@@ -9,8 +9,8 @@ const TodoList = () => {
   const [filter, setFilter] = useState('all'); // 'all', 'active', 'completed'
 
   const filteredTodos = todos.filter((todo) => {
-    if (filter === 'active') return !todo.completed;
-    if (filter === 'completed') return todo.completed;
+    if (filter === 'active') return todo.todo_status === 'active';
+    if (filter === 'completed') return todo.todo_status === 'finished';
     return true;
   });
 
