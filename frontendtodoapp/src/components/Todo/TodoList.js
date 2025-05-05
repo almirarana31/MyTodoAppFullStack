@@ -6,7 +6,7 @@ import AddTodo from './AddTodo';
 const TodoList = () => {
   const { todos, loading, error, resetError } = useTodo();
   const [showAddModal, setShowAddModal] = useState(false);
-  const [filter, setFilter] = useState('all'); // 'all', 'active', 'completed'
+  const [filter, setFilter] = useState('all'); 
 
   const filteredTodos = todos.filter((todo) => {
     if (filter === 'active') return todo.todo_status === 'active';
@@ -16,7 +16,7 @@ const TodoList = () => {
 
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
-    resetError(); // Reset error when filter changes
+    resetError();
   };
 
   if (loading) {

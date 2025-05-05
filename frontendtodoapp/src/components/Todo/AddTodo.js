@@ -11,14 +11,13 @@ const AddTodo = ({ onClose }) => {
 
   const { addTodo } = useTodo();
 
-  // Automatically focus on the title input field when the modal opens
   useEffect(() => {
     document.getElementById('title').focus();
   }, []);
 
   const handleInputChange = (setter) => (e) => {
     setter(e.target.value);
-    setError(''); // Reset error on input change
+    setError('');
   };
 
   const handleSubmit = async (e) => {
@@ -39,10 +38,10 @@ const AddTodo = ({ onClose }) => {
     try {
       setLoading(true);
       const todoData = {
-        todo_name: title,          // Change to match MongoDB field name
-        todo_desc: description,    // Change to match MongoDB field name
-        due_date: dueDate ? new Date(dueDate).toISOString() : null,  // Match MongoDB field name
-        todo_priority: priority,   // Change to match MongoDB field name
+        todo_name: title,        
+        todo_desc: description, 
+        due_date: dueDate ? new Date(dueDate).toISOString() : null,
+        todo_priority: priority, 
         todo_status: 'active'
       };
 
@@ -66,12 +65,9 @@ const AddTodo = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-10 overflow-y-auto">
       <div className="flex min-h-screen items-center justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-        {/* Backdrop */}
         <div className="fixed inset-0 transition-opacity" onClick={onClose}>
           <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
         </div>
-
-        {/* Modal */}
         <div className="inline-block transform overflow-hidden rounded-lg bg-white text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:align-middle">
           <div className="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div className="sm:flex sm:items-start">

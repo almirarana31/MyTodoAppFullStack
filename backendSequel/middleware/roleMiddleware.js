@@ -1,4 +1,3 @@
-// middleware/roleMiddleware.js
 export function checkRole(roles) {
   return (req, res, next) => {
     try {
@@ -6,12 +5,12 @@ export function checkRole(roles) {
         return res.status(403).json({ message: "Authentication required" });
       }
 
-      // Allow users to access their own data
+      // allow users to access their own data
       if (req.params.id && req.params.id === req.user.id) {
         return next();
       }
 
-      // Check role permissions for other cases
+      // check role permissions for other cases
       if (!roles.includes(req.user.role)) {
         return res.status(403).json({ message: "Access denied. Insufficient permissions." });
       }

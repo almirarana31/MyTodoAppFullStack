@@ -1,4 +1,3 @@
-// routes/usersRoute.js
 import { 
   signIn, 
   signUp, 
@@ -7,11 +6,9 @@ import {
   resendVerificationCode,
   forgotPassword,
   resetPassword,
-  refreshToken, // Make sure this is imported
+  refreshToken,
   logout,
-  getAllUsers,
   updateUser,
-  deleteUser
 } from '../controllers/users.js';
 import { auth } from '../middleware/auth.js';
 import { checkRole } from '../middleware/roleMiddleware.js';
@@ -311,26 +308,6 @@ router.post("/logout", logout);
  */
 router.post("/refresh_token", refreshToken);
 
-// Admin routes
-/** 
- * @swagger 
- * /users:
- *   get:
- *     tags:
- *       - User
- *     summary: Get all users (admin only)
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       '200':
- *         description: List of users retrieved successfully
- *       '403':
- *         description: Unauthorized
- *       '500':
- *         description: Internal server error
- */
-router.get("/users", auth, checkRole(['admin']), getAllUsers);
-
 /**
  * @swagger
  * /users/{id}:
@@ -380,32 +357,5 @@ router.get("/users", auth, checkRole(['admin']), getAllUsers);
  *         description: Internal server error
  */
 router.patch("/users/:id", auth, updateUser);
-
-/**
- * @swagger
- * /users/{id}:
- *   delete:
- *     tags:
- *       - User
- *     summary: Delete user (admin only)
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *     responses:
- *       '200':
- *         description: User deleted successfully
- *       '403':
- *         description: Unauthorized
- *       '404':
- *         description: User not found
- *       '500':
- *         description: Internal server error
- */
-router.delete("/users/:id", auth, checkRole(['admin']), deleteUser);
 
 export default router;

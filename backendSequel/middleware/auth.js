@@ -1,4 +1,3 @@
-// middleware/auth.js
 import jwt from 'jsonwebtoken';
 
 export const auth = (req, res, next) => {
@@ -25,7 +24,6 @@ export const auth = (req, res, next) => {
         return res.status(401).json({ message: "Token verification failed" });
       }
 
-      // Add the decoded user to the request object
       req.user = decoded;
       next();
     });

@@ -10,7 +10,6 @@ const Login = () => {
   const { login, currentUser } = useAuth();
   const navigate = useNavigate();
 
-  // Redirect if already logged in
   useEffect(() => {
     if (currentUser) {
       navigate('/');
@@ -19,7 +18,7 @@ const Login = () => {
 
   const handleInputChange = (setter) => (e) => {
     setter(e.target.value);
-    setError(''); // Reset error on input change
+    setError(''); 
   };
 
   const handleSubmit = async (e) => {
@@ -34,11 +33,9 @@ const Login = () => {
       setLoading(true);
       const response = await login(email, password);
       
-      // Your authService returns the server response with access_token
       if (response.access_token) {
         navigate('/', { replace: true });
       } else if (response.message) {
-        // This handles the error response from authContext
         setError(response.message);
       } else {
         setError('Login failed. Please try again.');

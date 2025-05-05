@@ -19,13 +19,11 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       setError(null);
-      // authService.login already returns the server response which includes access_token
+      
       const data = await authService.login(email, password);
       
-      // Update the current user in context
       setCurrentUser(data.user);
       
-      // Return the server response directly - it already contains access_token
       return data;
     } catch (err) {
       console.error('Login error in context:', err);
@@ -57,23 +55,20 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     authService.logout();
     setCurrentUser(null);
-    // Redirect to login page after logout
     window.location.href = '/login';
   };
 
   const updateProfile = async (userId, userData) => {
     try {
       setError(null);
-      console.log('Updating profile in context:', { userId, userData }); // Debug log
+      console.log('Updating profile in context:', { userId, userData });
 
       const updated = await authService.updateUser(userId, userData);
-      console.log('Server response:', updated); // Debug log
+      console.log('Server response:', updated);
 
       if (!updated) {
         throw new Error('No response from server');
       }
-
-      // Dynamically update the current user state
       setCurrentUser((prev) => ({ ...prev, ...updated.user }));
       return { success: true };
     } catch (err) {
@@ -131,7 +126,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Reset error state when navigating or retrying actions
   const resetError = () => {
     setError(null);
   };
@@ -148,7 +142,7 @@ export const AuthProvider = ({ children }) => {
     resendVerificationCode,
     forgotPassword,
     resetPassword,
-    resetError, // Expose resetError to the context
+    resetError, 
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -16,7 +16,6 @@ const UserProfile = () => {
   const [updating, setUpdating] = useState(false);
   const [uploading, setUploading] = useState(false);
 
-  // Focus name input on load
   useEffect(() => {
     if (!loading) {
       document.getElementById('name').focus();
@@ -73,12 +72,12 @@ const UserProfile = () => {
       setUploading(true);
       setError('');
       
-      // Create form data
+      // create form data
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('upload_preset', 'profile_picture'); // Make sure this preset exists in your Cloudinary account
+      formData.append('upload_preset', 'profile_picture'); 
       
-      // Upload to Cloudinary
+      // upload to Cloudinary
       const response = await fetch(
         `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
         {
@@ -93,7 +92,7 @@ const UserProfile = () => {
         throw new Error(data.error.message);
       }
   
-      // Update profile with new image URL
+      // update profile with new image URL
       const userId = currentUser.id || currentUser._id;
       const updateResponse = await updateProfile(userId, {
         user_image: data.secure_url
@@ -131,7 +130,7 @@ const UserProfile = () => {
 
       const userId = currentUser.id || currentUser._id;
       
-      // Debug log
+      // debug log
       console.log('User IDs:', {
         currentUserId: userId,
         currentUser

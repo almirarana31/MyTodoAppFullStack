@@ -1,11 +1,8 @@
-// db/connection.js
 import MongoSequelize from './mongoSequelize.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-
-// Create an instance of MongoSequelize
 const sequelize = new MongoSequelize(process.env.CONNECTION_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

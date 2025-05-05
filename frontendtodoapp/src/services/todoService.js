@@ -8,7 +8,6 @@ const todoService = {
 
   addTodo: async (todoData) => {
     console.log('Adding todo:', todoData);
-    // Don't transform the data if it's already in the right format
     const todo = {
       todo_name: todoData.todo_name || todoData.title,
       todo_desc: todoData.todo_desc || todoData.description || '',
@@ -27,7 +26,7 @@ const todoService = {
     const todo = {
       todo_name: todoData.todo_name || todoData.title,
       todo_desc: todoData.todo_desc || todoData.description || '',
-      todo_status: todoData.todo_status, // Just pass through the value directly
+      todo_status: todoData.todo_status,
       todo_priority: todoData.todo_priority || todoData.priority || 'low',
       due_date: todoData.due_date || null
     };

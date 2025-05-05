@@ -33,7 +33,7 @@ export const TodoProvider = ({ children }) => {
   };
 
   const addTodo = async (todo) => {
-    const tempTodo = { ...todo, _id: Date.now().toString() }; // Temporary ID for optimistic update
+    const tempTodo = { ...todo, _id: Date.now().toString() }; 
     setTodos((prevTodos) => [...prevTodos, tempTodo]);
 
     try {
@@ -44,7 +44,7 @@ export const TodoProvider = ({ children }) => {
       );
       return { success: true };
     } catch (err) {
-      setTodos((prevTodos) => prevTodos.filter((t) => t._id !== tempTodo._id)); // Revert optimistic update
+      setTodos((prevTodos) => prevTodos.filter((t) => t._id !== tempTodo._id)); 
       setError(err.response?.data?.message || 'Failed to add todo');
       return { success: false, error: err.response?.data?.message || 'Failed to add todo' };
     }
@@ -65,7 +65,7 @@ export const TodoProvider = ({ children }) => {
   };
 
   const deleteTodo = async (id) => {
-    const tempTodos = todos.filter((t) => t._id !== id); // Optimistic update
+    const tempTodos = todos.filter((t) => t._id !== id); 
     setTodos(tempTodos);
 
     try {
@@ -73,7 +73,7 @@ export const TodoProvider = ({ children }) => {
       await todoService.deleteTodo(id);
       return { success: true };
     } catch (err) {
-      setTodos(tempTodos); // Revert optimistic update if deletion fails
+      setTodos(tempTodos); 
       setError(err.response?.data?.message || 'Failed to delete todo');
       return { success: false, error: err.response?.data?.message || 'Failed to delete todo' };
     }
@@ -91,7 +91,7 @@ export const TodoProvider = ({ children }) => {
     addTodo,
     updateTodo,
     deleteTodo,
-    resetError, // Expose resetError to the context
+    resetError, 
   };
 
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;

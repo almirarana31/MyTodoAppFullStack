@@ -18,10 +18,8 @@ const ResetPasswordConfirm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Clear previous errors
     setError('');
     
-    // Front-end validation
     if (!email.trim()) {
       setError('Please enter your email');
       return;
@@ -51,7 +49,6 @@ const ResetPasswordConfirm = () => {
       setMessage('');
       setLoading(true);
       
-      // Log the values being sent (for debugging)
       console.log('Sending reset request with:', { token: resetCode, password, email });
       
       const response = await resetPassword(resetCode, password, email);
@@ -59,12 +56,10 @@ const ResetPasswordConfirm = () => {
       
       if (response && response.success) {
         setMessage('Password has been reset successfully');
-        // Redirect to login page after a short delay
         setTimeout(() => {
           navigate('/login');
         }, 3000);
       } else {
-        // Handle specific error messages from the server
         const errorMsg = response?.error || 'Failed to reset password. Please try again.';
         setError(errorMsg);
       }
@@ -78,7 +73,6 @@ const ResetPasswordConfirm = () => {
 
   const handleInputChange = (setter) => (e) => {
     setter(e.target.value);
-    // Clear error when user types
     if (error) setError('');
   };
 

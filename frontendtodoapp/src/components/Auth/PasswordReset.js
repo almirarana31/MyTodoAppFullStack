@@ -28,7 +28,6 @@ const PasswordReset = () => {
       
       if (response.success) {
         setMessage('Check your inbox for the reset code');
-        // Redirect to reset password page after a short delay
         setTimeout(() => {
           navigate('/reset-password');
         }, 3000);

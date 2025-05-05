@@ -40,9 +40,8 @@ const Register = () => {
       return setError('Passwords do not match');
     }
 
-    // Improve validation to check if fields are truly empty or only whitespace
     const isEmptyField = Object.entries(formData)
-      .filter(([key]) => key !== 'confirmPassword') // Exclude confirmPassword from check
+      .filter(([key]) => key !== 'confirmPassword')
       .some(([_, value]) => value.trim() === '');
     
     if (isEmptyField) {
@@ -56,7 +55,7 @@ const Register = () => {
 
       if (success) {
         setSuccess('Registration successful! Please verify your email.');
-        // Navigate to email verification page with email in state
+        // navigate to email verification page with email in state
         navigate('/verify-email', { state: { email: formData.email } });
       } else {
         setError(error || 'Failed to create an account');

@@ -9,7 +9,6 @@ const TodoItem = ({ todo }) => {
 
   const handleToggleComplete = async () => {
     try {
-      // This should pass the correct data format your API expects
       await updateTodo(todo._id, {
         ...todo,
         todo_status: todo.todo_status === 'active' ? 'finished' : 'active'
@@ -27,13 +26,11 @@ const TodoItem = ({ todo }) => {
     }
   };
 
-  // Format the date
   const formatDate = (dateString) => {
-    // If null, undefined, or empty string
     if (dateString == null || dateString === '') return "No due date";
     
     const date = new Date(dateString);
-    // Check if date is valid
+
     if (isNaN(date.getTime())) return "Invalid date format";
     
     return date.toLocaleDateString('en-US', {

@@ -1,4 +1,3 @@
-// db/model.js
 import mongoose from 'mongoose';
 
 class MongoModel {

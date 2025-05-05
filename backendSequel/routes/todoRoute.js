@@ -1,4 +1,3 @@
-// routes/todoRoute.js
 import { Router } from 'express';
 import { createTodo, deleteTodo, getAllTodos, updateTodo } from '../controllers/todolist.js';
 import { auth } from '../middleware/auth.js';

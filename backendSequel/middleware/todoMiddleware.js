@@ -1,8 +1,7 @@
-// middleware/todoMiddleware.js
 import { Types } from 'mongoose';
 import TodoList from '../models/todolist.js';
 
-// Middleware to validate ID
+// middleware to validate ID
 export function validateTodoId(req, res, next) {
   const { id } = req.params;
   
@@ -13,7 +12,7 @@ export function validateTodoId(req, res, next) {
   next();
 }
 
-// Validate todo fields
+// validate todo fields
 export function validateTodoFields(req, res, next) {
   console.log('Request body in middleware:', req.body);
   console.log('Content-Type:', req.headers['content-type']);
@@ -49,7 +48,7 @@ export function validateTodoFields(req, res, next) {
   next();
 }
 
-// Check if todo exists (and belongs to user)
+// check if todo exists
 export async function checkTodoExists(req, res, next) {
   try {
     const { id } = req.params;
@@ -57,10 +56,9 @@ export async function checkTodoExists(req, res, next) {
     
     console.log('Looking for todo:', { id, userId });
     
-    // Fixed query format to match MongoModel's expectations
     const todo = await TodoList.findOne({
-      _id: id, // Use MongoDB's _id field
-      user: userId.toString() // Ensure userId is a string to match the model definition
+      _id: id,
+      user: userId.toString() 
     });
     
     console.log('Found todo:', todo);
@@ -77,7 +75,7 @@ export async function checkTodoExists(req, res, next) {
   }
 }
 
-// Validate todo creation request
+// validate todo creation request
 export function validateCreateTodo(req, res, next) {
   const { todo_name, todo_desc, todo_status, todo_priority } = req.body;
   
@@ -104,7 +102,7 @@ export function validateCreateTodo(req, res, next) {
   next();
 }
 
-// Validate todo update request
+// validate todo update request
 export function validateUpdateTodo(req, res, next) {
   const { todo_name, todo_desc, todo_status, todo_priority } = req.body;
   

@@ -16,15 +16,14 @@ const VerifyEmail = () => {
   const handleOtpChange = (e, index) => {
     const value = e.target.value;
     
-    // Only allow alphanumeric characters
     if (value && !/^[a-zA-Z0-9]+$/.test(value)) return;
     
     const newOtp = [...otp];
-    // Take only the last character if multiple are pasted
+
     newOtp[index] = value.slice(-1);
     setOtp(newOtp);
     
-    // Auto focus to next input if value is entered
+
     if (value && index < 5) {
       const nextInput = document.getElementById(`otp-${index + 1}`);
       if (nextInput) nextInput.focus();
@@ -32,19 +31,17 @@ const VerifyEmail = () => {
   };
 
   const handleKeyDown = (e, index) => {
-    // Handle backspace
+
     if (e.key === 'Backspace' && !otp[index] && index > 0) {
       const prevInput = document.getElementById(`otp-${index - 1}`);
       if (prevInput) prevInput.focus();
     }
     
-    // Handle left arrow key
     if (e.key === 'ArrowLeft' && index > 0) {
       const prevInput = document.getElementById(`otp-${index - 1}`);
       if (prevInput) prevInput.focus();
     }
     
-    // Handle right arrow key
     if (e.key === 'ArrowRight' && index < 5) {
       const nextInput = document.getElementById(`otp-${index + 1}`);
       if (nextInput) nextInput.focus();
@@ -55,12 +52,12 @@ const VerifyEmail = () => {
     e.preventDefault();
     const pasteData = e.clipboardData.getData('text/plain').trim();
     
-    // Check if pasted content is a valid 6-character alphanumeric string
+   
     if (/^[a-zA-Z0-9]{6}$/.test(pasteData)) {
       const pastedOtp = pasteData.split('');
       setOtp(pastedOtp);
       
-      // Focus the last input
+      
       const lastInput = document.getElementById('otp-5');
       if (lastInput) lastInput.focus();
     }
@@ -71,14 +68,12 @@ const VerifyEmail = () => {
     setError('');
     setSuccess('');
     
-    // Validate OTP
     const otpValue = otp.join('');
     if (otpValue.length !== 6) {
       setError('Please enter a valid 6-character OTP');
       return;
     }
 
-    // Validate email
     if (!email.trim()) {
       setError('Please enter your email address');
       return;
