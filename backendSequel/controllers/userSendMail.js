@@ -3,12 +3,12 @@ import { createTransport } from 'nodemailer';
 import { randomBytes } from 'crypto';
 import User from '../models/user.js';
 
-// Generate verification code
+// generate verification code
 export function generateVerificationCode() {
   return randomBytes(3).toString('hex');
 }
 
-// Send verification email
+// send verification email
 export async function sendVerificationEmail(email, code) {
   try {
     const transporter = createTransport({
@@ -46,7 +46,7 @@ export async function sendVerificationEmail(email, code) {
   }
 }
 
-// Send password reset email
+// send password reset email
 export async function sendPasswordResetEmail(email, code) {
   try {
     const transporter = createTransport({

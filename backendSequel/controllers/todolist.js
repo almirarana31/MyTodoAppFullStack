@@ -1,7 +1,7 @@
 // controllers/todolist.js
 import TodoList from '../models/todolist.js';
 
-// Create to-do
+// create todo
 export async function createTodo(req, res) {
   try {
     const { todo_name, todo_desc, todo_status, todo_priority, due_date } = req.body;
@@ -16,7 +16,7 @@ export async function createTodo(req, res) {
       todo_status: todo_status || 'active',
       todo_priority: todo_priority || 'low',
       due_date,
-      user: req.user.id.toString() // Ensure user ID is stored as string
+      user: req.user.id.toString() // id as string
     });
 
     res.status(200).json({ message: "Create a to do list successfully!", newTodo });
@@ -26,12 +26,11 @@ export async function createTodo(req, res) {
   }
 }
 
-// Get all to-dos
+// get all todo
 export async function getAllTodos(req, res) {
   try {
-    // Correct query format for MongoModel.findAll()
     const todos = await TodoList.findAll({ 
-      user: req.user.id.toString() // Direct filter object, no 'where' wrapper
+      user: req.user.id.toString()
     });
     res.status(200).json(todos);
   } catch (error) {
@@ -40,13 +39,13 @@ export async function getAllTodos(req, res) {
   }
 }
 
-// Update to-do
+// update todo
 export async function updateTodo(req, res) {
   try {
     const { id } = req.params;
     const { todo_name, todo_desc, todo_status, todo_priority, due_date } = req.body;
 
-    // Log for debugging
+    // debug
     console.log('Update Todo Request:');
     console.log('Todo ID:', id);
     console.log('User ID from token:', req.user.id);
@@ -59,10 +58,8 @@ export async function updateTodo(req, res) {
     if (todo_priority) updateData.todo_priority = todo_priority;
     if (due_date !== undefined) updateData.due_date = due_date;
 
-    // Find the todo first to verify it exists and belongs to the user
-    // Use direct filter object for MongoModel.findOne()
     const todo = await TodoList.findOne({ 
-      _id: id,  // Use MongoDB's _id field
+      _id: id, 
       user: req.user.id.toString()
     });
 
@@ -70,13 +67,11 @@ export async function updateTodo(req, res) {
       return res.status(404).json({ message: "Todo not found or you don't have permission to access it" });
     }
 
-    // Update the todo - using proper format for MongoModel.update
     await TodoList.update(
-      { _id: id },  // filter
-      { $set: updateData }  // MongoDB update operator
+      { _id: id },
+      { $set: updateData } 
     );
     
-    // Fetch the updated todo
     const updatedTodo = await TodoList.findOne({ _id: id });
 
     res.status(200).json({ message: "To-do updated successfully!", updatedTodo });
@@ -86,15 +81,14 @@ export async function updateTodo(req, res) {
   }
 }
 
-// Delete to-do
+// delete todo
 export async function deleteTodo(req, res) {
   try {
     const { id } = req.params;
     
-    // Find the todo first to verify it exists and belongs to the user
-    // Use direct filter object for MongoModel.findOne()
+
     const todo = await TodoList.findOne({ 
-      _id: id,  // Use MongoDB's _id field
+      _id: id,  
       user: req.user.id.toString()
     });
 
@@ -102,7 +96,6 @@ export async function deleteTodo(req, res) {
       return res.status(404).json({ message: "To-do not found or you don't have permission to access it" });
     }
     
-    // Delete the todo - using proper format for MongoModel.delete
     await TodoList.delete({ _id: id });
 
     res.status(200).json({ message: "To-do deleted successfully!" });
