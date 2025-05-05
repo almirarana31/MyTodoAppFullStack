@@ -29,9 +29,13 @@ const TodoItem = ({ todo }) => {
 
   // Format the date
   const formatDate = (dateString) => {
-    if (!dateString) return "No due date";
+    // If null, undefined, or empty string
+    if (dateString == null || dateString === '') return "No due date";
     
     const date = new Date(dateString);
+    // Check if date is valid
+    if (isNaN(date.getTime())) return "Invalid date format";
+    
     return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',

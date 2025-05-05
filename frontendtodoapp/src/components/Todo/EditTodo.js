@@ -26,10 +26,6 @@ const EditTodo = ({ todo, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title.trim()) {
-      return setError('Title is required');
-    }
-
     if (dueDate && new Date(dueDate) < new Date()) {
       return setError('Due date cannot be in the past');
     }
@@ -38,10 +34,10 @@ const EditTodo = ({ todo, onClose }) => {
       setLoading(true);
       const updatedTodo = {
         ...todo,
-        title,
-        description,
-        dueDate: dueDate || undefined,
-        priority,
+        todo_name: title,
+        todo_desc: description,
+        due_date: dueDate ? new Date(dueDate).toISOString() : null,
+        todo_priority: priority,
       };
 
       const { success, error } = await updateTodo(todo._id, updatedTodo);
@@ -86,7 +82,7 @@ const EditTodo = ({ todo, onClose }) => {
                 <form onSubmit={handleSubmit} className="mt-4">
                   <div className="mb-4">
                     <label htmlFor="title" className="block text-sm font-medium text-gray-700">
-                      Title *
+                      Title
                     </label>
                     <input
                       type="text"
@@ -94,7 +90,6 @@ const EditTodo = ({ todo, onClose }) => {
                       value={title}
                       onChange={handleInputChange(setTitle)}
                       className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
-                      required
                     />
                   </div>
 

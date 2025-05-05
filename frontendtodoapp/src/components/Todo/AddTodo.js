@@ -28,6 +28,10 @@ const AddTodo = ({ onClose }) => {
       return setError('Title is required');
     }
 
+    if (!description.trim()) {
+      return setError('Description is required');
+    }
+
     if (dueDate && new Date(dueDate) < new Date()) {
       return setError('Due date cannot be in the past');
     }
@@ -35,11 +39,11 @@ const AddTodo = ({ onClose }) => {
     try {
       setLoading(true);
       const todoData = {
-        title,
-        description,
-        dueDate: dueDate || undefined,
-        priority,
-        completed: false,
+        todo_name: title,          // Change to match MongoDB field name
+        todo_desc: description,    // Change to match MongoDB field name
+        due_date: dueDate ? new Date(dueDate).toISOString() : null,  // Match MongoDB field name
+        todo_priority: priority,   // Change to match MongoDB field name
+        todo_status: 'active'
       };
 
       const { success, error } = await addTodo(todoData);

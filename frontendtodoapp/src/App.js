@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Layout/Navbar';
+import Footer from './components/Layout/Footer';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import VerifyEmail from './components/Auth/VerifyEmail';
@@ -40,6 +41,7 @@ const App = () => {
             } />
           </Routes>
         </main>
+        <Footer />
       </div>
     </Router>
   );
