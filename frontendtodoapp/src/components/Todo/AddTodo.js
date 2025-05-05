@@ -46,6 +46,9 @@ const AddTodo = ({ onClose }) => {
         todo_status: 'active'
       };
 
+      console.log('Submitting todo data:', todoData);
+      console.log('Token exists:', !!localStorage.getItem('token'));
+
       const { success, error } = await addTodo(todoData);
 
       if (success) {

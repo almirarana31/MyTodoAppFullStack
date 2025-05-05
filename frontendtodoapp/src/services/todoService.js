@@ -7,14 +7,17 @@ const todoService = {
   },
 
   addTodo: async (todoData) => {
+    console.log('Adding todo:', todoData);
+    // Don't transform the data if it's already in the right format
     const todo = {
-      todo_name: todoData.title,
-      todo_desc: todoData.description || '',
-      todo_status: todoData.completed ? 'finished' : 'active',
-      todo_priority: todoData.priority || 'low',
+      todo_name: todoData.todo_name || todoData.title,
+      todo_desc: todoData.todo_desc || todoData.description || '',
+      todo_status: todoData.todo_status || (todoData.completed ? 'finished' : 'active'),
+      todo_priority: todoData.todo_priority || todoData.priority || 'low',
       due_date: todoData.due_date || null
     };
     const response = await api.post('/service/todo/add_todo', todo);
+    console.log('Response from server:', response.data);
     return response.data.newTodo;
   },
 
