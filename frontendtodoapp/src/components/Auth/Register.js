@@ -96,7 +96,7 @@ const Register = () => {
               name="personal_id"
               value={formData.personal_id}
               onChange={handleInputChange}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
               required
             />
           </div>
@@ -111,7 +111,7 @@ const Register = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
               required
             />
           </div>
@@ -126,7 +126,7 @@ const Register = () => {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
               required
             />
           </div>
@@ -141,7 +141,7 @@ const Register = () => {
               name="address"
               value={formData.address}
               onChange={handleInputChange}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
               required
             />
           </div>
@@ -156,7 +156,7 @@ const Register = () => {
               name="phone_number"
               value={formData.phone_number}
               onChange={handleInputChange}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
               required
             />
           </div>
@@ -171,7 +171,7 @@ const Register = () => {
               name="password"
               value={formData.password}
               onChange={handleInputChange}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
               required
             />
           </div>
@@ -186,7 +186,7 @@ const Register = () => {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleInputChange}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
               required
             />
           </div>
@@ -194,7 +194,7 @@ const Register = () => {
           <button
             type="submit"
             disabled={loading || success}
-            className="w-full rounded-md bg-blue-600 py-2 px-4 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-300"
+            className="w-full rounded-md bg-pink-600 py-2 px-4 text-white hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 disabled:bg-pink-300"
           >
             {loading ? 'Registering...' : 'Register'}
           </button>
@@ -202,7 +202,7 @@ const Register = () => {
 
         <div className="mt-6 text-center">
           <span className="text-sm text-gray-600">Already have an account? </span>
-          <Link to="/login" className="text-sm text-blue-600 hover:text-blue-800">
+          <Link to="/login" className="text-sm text-pink-600 hover:text-pink-800">
             Login
           </Link>
         </div>

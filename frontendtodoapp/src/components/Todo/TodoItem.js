@@ -70,7 +70,7 @@ const TodoItem = ({ todo }) => {
             type="checkbox"
             checked={isCompleted}
             onChange={handleToggleComplete}
-            className="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            className="h-5 w-5 rounded border-gray-300 text-pink-600 focus:ring-pink-500"
           />
           <div className="ml-4">
             <div className="flex items-center gap-2">
@@ -97,7 +97,7 @@ const TodoItem = ({ todo }) => {
         <div className="flex space-x-2">
           <button
             onClick={() => setShowEditModal(true)}
-            className="rounded-md bg-gray-100 p-2 text-gray-600 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="rounded-md bg-gray-100 p-2 text-gray-600 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-500"
           >
             Edit
           </button>

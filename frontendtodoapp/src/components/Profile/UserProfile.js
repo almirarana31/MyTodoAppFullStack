@@ -234,7 +234,7 @@ const UserProfile = () => {
                 id="name"
                 value={name}
                 onChange={handleInputChange(setname)}
-                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
                 required
               />
             </div>
@@ -263,7 +263,7 @@ const UserProfile = () => {
                 id="address"
                 value={address}
                 onChange={handleInputChange(setAddress)}
-                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
               />
             </div>
 
@@ -276,7 +276,7 @@ const UserProfile = () => {
                 id="phone_number"
                 value={phone_number}
                 onChange={handleInputChange(setPhoneNumber)}
-                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
               />
             </div>
 
@@ -305,7 +305,7 @@ const UserProfile = () => {
                 onChange={handleInputChange(setBio)}
                 rows="4"
                 maxLength="500"
-                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
               ></textarea>
               <p className="mt-1 text-sm text-gray-500">{500 - bio.length} characters remaining</p>
             </div>
@@ -314,7 +314,7 @@ const UserProfile = () => {
               <button
                 type="submit"
                 disabled={updating}
-                className="rounded-md bg-blue-600 py-2 px-4 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-300"
+                className="rounded-md bg-pink-600 py-2 px-4 text-white hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 disabled:bg-pink-300"
                 aria-live="polite"
               >
                 {updating ? 'Updating...' : 'Update Profile'}

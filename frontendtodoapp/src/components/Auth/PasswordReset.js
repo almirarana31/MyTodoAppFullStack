@@ -49,8 +49,8 @@ const PasswordReset = () => {
       <div className="max-w-md w-full bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="px-6 py-8">
           <div className="mb-6">
-            <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-blue-100 mb-4">
-              <svg className="h-12 w-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-pink-100 mb-4">
+              <svg className="h-12 w-12 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
               </svg>
             </div>
@@ -77,7 +77,7 @@ const PasswordReset = () => {
                   type="email"
                   autoComplete="email"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
                   placeholder="you@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -88,7 +88,7 @@ const PasswordReset = () => {
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition-colors"
               >
                 Send Reset Code
               </button>
@@ -97,7 +97,7 @@ const PasswordReset = () => {
             <div className="flex flex-col space-y-2">
               <Link
                 to="/reset-password"
-                className="text-center text-sm text-blue-600 hover:text-blue-800 transition-colors"
+                className="text-center text-sm text-pink-600 hover:text-pink-800 transition-colors"
               >
                 Already have a reset code?
               </Link>
@@ -106,7 +106,7 @@ const PasswordReset = () => {
         </div>
         <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
           <p className="text-xs text-center text-gray-500">
-            Remember your password? <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500">Sign in</Link>
+            Remember your password? <Link to="/login" className="font-medium text-pink-600 hover:text-pink-500">Sign in</Link>
           </p>
         </div>
       </div>

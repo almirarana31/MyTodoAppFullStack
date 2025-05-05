@@ -76,7 +76,7 @@ const Login = () => {
               id="email"
               value={email}
               onChange={handleInputChange(setEmail)}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
               required
             />
           </div>
@@ -90,13 +90,13 @@ const Login = () => {
               id="password"
               value={password}
               onChange={handleInputChange(setPassword)}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
               required
             />
           </div>
 
           <div className="mb-6 text-right">
-            <Link to="/forgot-password" className="text-sm text-blue-600 hover:text-blue-800">
+            <Link to="/forgot-password" className="text-sm text-pink-600 hover:text-pink-800">
               Forgot Password?
             </Link>
           </div>
@@ -104,7 +104,7 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-md bg-blue-600 py-2 px-4 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-300"
+            className="w-full rounded-md bg-pink-600 py-2 px-4 text-white hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 disabled:bg-pink-300"
           >
             {loading ? 'Logging In...' : 'Login'}
           </button>
@@ -112,7 +112,7 @@ const Login = () => {
 
         <div className="mt-6 text-center">
           <span className="text-sm text-gray-600">Don't have an account? </span>
-          <Link to="/register" className="text-sm text-blue-600 hover:text-blue-800">
+          <Link to="/register" className="text-sm text-pink-600 hover:text-pink-800">
             Register
           </Link>
         </div>

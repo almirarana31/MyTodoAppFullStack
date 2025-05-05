@@ -4,7 +4,7 @@
 }
 
 .btn-primary {
-  @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  @apply bg-pink-600 text-white hover:bg-pink-700 focus:ring-2 focus:ring-pink-500 focus:ring-offset-2;
 }
 
 .btn-secondary {
@@ -17,7 +17,7 @@
 
 /* Form styles */
 .form-input {
-  @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500;
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500;
 }
 
 .form-label {
@@ -44,7 +44,7 @@
 }
 
 .nav-link-active {
-  @apply text-blue-600 hover:text-blue-700;
+  @apply text-pink-600 hover:text-pink-700;
 }
 
 /* Alert styles */
@@ -65,5 +65,5 @@
 }
 
 .alert-info {
-  @apply bg-blue-100 border border-blue-400 text-blue-700;
+  @apply bg-pink-100 border border-pink-400 text-pink-700;
 }

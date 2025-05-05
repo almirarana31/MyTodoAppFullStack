@@ -56,7 +56,7 @@ const TodoList = () => {
         <div className="flex items-center">
           <div className="mr-4">
             <select
-              className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="rounded-md border border-gray-300 px-3 py-2 focus:border-pink-500 focus:outline-none focus:ring-pink-500"
               value={filter}
               onChange={handleFilterChange}
             >
@@ -67,7 +67,7 @@ const TodoList = () => {
           </div>
           <button
             onClick={() => setShowAddModal(true)}
-            className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="rounded-md bg-pink-600 px-4 py-2 text-white hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
           >
             Add New
           </button>

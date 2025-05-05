@@ -98,7 +98,7 @@ const AddTodo = ({ onClose }) => {
                       id="title"
                       value={title}
                       onChange={handleInputChange(setTitle)}
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
                       required
                     />
                   </div>
@@ -112,7 +112,7 @@ const AddTodo = ({ onClose }) => {
                       value={description}
                       onChange={handleInputChange(setDescription)}
                       rows="3"
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
                     ></textarea>
                   </div>
 
@@ -125,7 +125,7 @@ const AddTodo = ({ onClose }) => {
                       id="dueDate"
                       value={dueDate}
                       onChange={handleInputChange(setDueDate)}
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
                     />
                   </div>
 
@@ -137,7 +137,7 @@ const AddTodo = ({ onClose }) => {
                       id="priority"
                       value={priority}
                       onChange={handleInputChange(setPriority)}
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-pink-500"
                     >
                       <option value="low">Low</option>
                       <option value="medium">Medium</option>
@@ -149,14 +149,14 @@ const AddTodo = ({ onClose }) => {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-300 sm:ml-3 sm:w-auto sm:text-sm"
+                      className="inline-flex w-full justify-center rounded-md border border-transparent bg-pink-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 disabled:bg-pink-300 sm:ml-3 sm:w-auto sm:text-sm"
                     >
                       {loading ? 'Adding...' : 'Add Todo'}
                     </button>
                     <button
                       type="button"
                       onClick={onClose}
-                      className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"
+                      className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"
                     >
                       Cancel
                     </button>
