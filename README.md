@@ -74,6 +74,34 @@ Welcome to Ally's Todo App! This time with a RESTful API backend using Sequelize
 🧠 Swagger is generated automatically from swagger.json and updated with route definitions.
 
 # 🖼️ Documentation
-1. Login Page
+1. Login Page <br>
 ![login](/screenshots/login.png)
-3. 
+<br>
+2. Register Page <br>
+![login](/screenshots/register.png)
+<br>
+3. Forgot Password Page <br>
+![login](/screenshots/reset-password.png)
+<br>
+4. Verify Email Page <br>
+![login](/screenshots/verify-email.png)
+<br>
+5. Todos Page <br>
+![login](/screenshots/todos.png)
+<br>
+6. Edit Todo Modal <br>
+![login](/screenshots/edit.png)
+<br>
+7. Add Todo Modal <br>
+![login](/screenshots/add.png)
+<br>
+8. Profile Page <br>
+![login](/screenshots/profile.png)
+<br>
+9. Swagger UI Page <br>
+![login](/screenshots/swagger.png)
+<br>
+
+
+
+
