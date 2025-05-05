@@ -196,12 +196,6 @@ const ResetPasswordConfirm = () => {
               >
                 Need a new reset code?
               </Link>
-              <Link
-                to="/login"
-                className="text-center text-sm text-pink-600 hover:text-pink-800 transition-colors"
-              >
-                Back to Login
-              </Link>
             </div>
           </form>
         </div>
