@@ -77,29 +77,37 @@ Welcome to Ally's Todo App! This time with a RESTful API backend using Sequelize
 1. Login Page <br>
 ![login](/screenshots/login.png)
 <br>
+
 2. Register Page <br>
-![login](/screenshots/register.png)
+![regist](/screenshots/register.png)
 <br>
+
 3. Forgot Password Page <br>
-![login](/screenshots/reset-password.png)
+![forgot](/screenshots/reset-password.png)
 <br>
+
 4. Verify Email Page <br>
-![login](/screenshots/verify-email.png)
+![verify](/screenshots/verify-email.png)
 <br>
+
 5. Todos Page <br>
-![login](/screenshots/todos.png)
+![todos](/screenshots/todos.png)
 <br>
+
 6. Edit Todo Modal <br>
-![login](/screenshots/edit.png)
+![edit](/screenshots/edit.png)
 <br>
+
 7. Add Todo Modal <br>
-![login](/screenshots/add.png)
+![add](/screenshots/add.png)
 <br>
+
 8. Profile Page <br>
-![login](/screenshots/profile.png)
+![profile](/screenshots/profile.png)
 <br>
+
 9. Swagger UI Page <br>
-![login](/screenshots/swagger.png)
+![swagger](/screenshots/swagger.png)
 <br>
 
 
