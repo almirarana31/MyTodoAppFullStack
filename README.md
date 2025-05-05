@@ -75,4 +75,5 @@ Welcome to Ally's Todo App! This time with a RESTful API backend using Sequelize
 
 # 🖼️ Documentation
 1. Login Page
-2. 
+![login](/screenshots/login.png)
+3. 
