@@ -8,7 +8,6 @@ Welcome to Ally's Todo App! This time with a RESTful API backend using Sequelize
 - 🔐 Password reset  
 - 👤 User profile management  
 - 📝 Todo management (create, read, update, delete)  
-- 🛡️ Role-based authorization  
 - 📚 API documentation with Swagger 
 
 ## 🍒 Getting Started
