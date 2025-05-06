@@ -11,15 +11,6 @@ Welcome to Ally's Todo App! This time with a RESTful API backend using Sequelize
 - 🛡️ Role-based authorization  
 - 📚 API documentation with Swagger 
 
-## 🧱 Tech Stack
-- ⚙️ Node.js  
-- 🚀 Express.js  
-- 🎃 MongoDB  
-- 🧵 Custom MongoDB-Sequelize adapter  
-- 🔑 JSON Web Tokens (JWT)  
-- 📬 Nodemailer  
-- 📖 Swagger  
-
 ## 🍒 Getting Started
 ### 📋 Prerequisites
 - 🟢 Node.js (v14 or later)  
@@ -31,7 +22,7 @@ Welcome to Ally's Todo App! This time with a RESTful API backend using Sequelize
    git clone https://github.com/almirarana31/backendTodoApp.git
    cd backendTodoApp
    ```
-2. 🧪 Install dependencies
+2. 🧪 Install dependencies (must be done in each directory)
    ```bash
    npm install
    ```
@@ -39,7 +30,7 @@ Welcome to Ally's Todo App! This time with a RESTful API backend using Sequelize
    ```json
    PORT=3000
    # MongoDB
-   MONGODB_URI=mongodb+srv://your_user:your_password@cluster.mongodb.net/todoapp?      retryWrites=true&w=majority
+   MONGODB_URI=mongodb+srv://your_user:your_password@cluster.mongodb.net/todoapp?retryWrites=true&w=majority
    # JWT
    JWT_SECRET=your_jwt_secret_key
    JWT_EXPIRES_IN=1d
@@ -53,12 +44,14 @@ Welcome to Ally's Todo App! This time with a RESTful API backend using Sequelize
    ```
    🔐 Note: Never commit your real .env file to GitHub.
 4.🚦 Start the server
-   These files cannot run concurrently as it may cause errors. When cloning or creating      your own, make sure to separate the frontend and the backend. In this case, travel to     the correct directory and then start the server either with:
+   These files cannot run concurrently as it may cause errors. To start the backend:
    ```bash
+   cd backendSequel
    npm run dev
    ```
-   or with
+   Make sure that the API documentation works and all the endpoints appear. Then to start the frontend:
    ```bash
+   cd frontendtodoapp
    npm start
    ```
 
@@ -74,42 +67,42 @@ Welcome to Ally's Todo App! This time with a RESTful API backend using Sequelize
 🧠 Swagger is generated automatically from swagger.json and updated with route definitions.
 
 # 🖼️ Documentation
-1. Login Page <br>
+## 1. Login Page <br>
 ![login](/screenshots/login.png)
 <br>
 
-2. Register Page <br>
+## 2. Register Page <br>
 ![regist](/screenshots/register.png)
 <br>
 
-3. Forgot Password Page <br>
+## 3. Forgot Password Page <br>
 ![forgot](/screenshots/reset-password.png)
 <br>
 
-4. Verify Email Page <br>
+## 4. Verify Email Page <br>
 ![verify](/screenshots/verify-email.png)
 <br>
 
-5. Todos Page <br>
+## 5. Todos Page <br>
 ![todos](/screenshots/todos.png)
 <br>
 
-6. Edit Todo Modal <br>
+## 6. Edit Todo Modal <br>
 ![edit](/screenshots/edit.png)
 <br>
 
-7. Add Todo Modal <br>
+## 7. Add Todo Modal <br>
 ![add](/screenshots/add.png)
 <br>
 
-8. Profile Page <br>
+## 8. Profile Page <br>
 ![profile](/screenshots/profile.png)
 <br>
 
-9. Swagger UI Page <br>
+##9. Swagger UI Page <br>
 ![swagger](/screenshots/swagger.png)
 <br>
 
-
+# Thank you for checking out my Todo app!
 
 
